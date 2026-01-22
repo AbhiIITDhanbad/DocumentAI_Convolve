@@ -1,0 +1,33 @@
+{
+    "doc_id": "sample_image1",
+    "fields": {
+        "dealer_name": "DHARANI MOTORS",
+        "model_name": "Mahindra 575 DI",
+        "horse_power": 49,
+        "asset_cost": 105000,
+        "signature": {
+            "present": true,
+            "bbox": [
+                897.0036010742188,
+                1178.5089111328125,
+                1195.417724609375,
+                1289.549072265625
+            ],
+            "confidence": 0.85
+        },
+        "stamp": {
+            "present": true,
+            "bbox": [
+                0.65,
+                0.78,
+                0.85,
+                0.92
+            ],
+            "confidence": 0.9
+        }
+    },
+    "confidence": 0.86,
+    "processing_time_sec": 58.13,
+    "cost_estimate_usd": 0.001769,
+    "extraction_method": "vlm_optimized"
+}
