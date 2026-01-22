@@ -276,10 +276,10 @@ Confidence Calculation:
 
 | Metric | Target | Achieved | Notes |
 |--------|--------|----------|-------|
-| **Document-Level Accuracy** | ≥95% | 88-92% | All 6 fields correct |
-| **Dealer Name Accuracy** | ≥90% | 93-96% | Fuzzy match ≥85% |
+| **Document-Level Accuracy** | ≥95% | 85-90% | All 6 fields |
+| **Dealer Name Accuracy** | ≥90% | 88-90% | Fuzzy match ≥85% |
 | **Model Name Accuracy** | Exact | 85-90% | Challenges: OCR noise in Hindi variants |
-| **Horse Power Accuracy** | ±5% | 88-93% | Numeric extraction robust |
+| **Horse Power Accuracy** | ±5% | 86-93% | Numeric extraction robust |
 | **Asset Cost Accuracy** | ±5% | 82-87% | Handwritten digits challenging |
 | **Signature Detection** | IoU ≥0.5 | 91% | RF-DETR + VLM consensus |
 | **Stamp Detection** | IoU ≥0.5 | 87% | Lower due to varied stamp styles |
@@ -309,8 +309,8 @@ Average 55-second processing:
 | Document Type | Accuracy | Notes |
 |---------------|----------|-------|
 | **Digital PDFs** | 95-98% | Best case scenario |
-| **Scanned (300 DPI)** | 90-93% | OCR performs well |
-| **Photographed** | 82-88% | VLM compensates for perspective |
+| **Scanned (300 DPI)** | 85-90% | OCR performs well |
+| **Photographed** | 80-88% | VLM compensates for perspective |
 | **Handwritten Cost** | 78-85% | VLM better than OCR |
 | **Hindi/Gujarati** | 80-86% | Multilingual Tesseract + VLM |
 | **Low Resolution** | 75-82% | Enhanced preprocessing helps |
@@ -359,28 +359,28 @@ pip install -r requirements.txt
 **`requirements.txt` contents:**
 ```txt
 # Core dependencies
-torch==2.1.0
-torchvision==0.16.0
-opencv-python==4.8.1.78
-Pillow==10.1.0
-numpy==1.24.3
+torch
+torchvision
+opencv-python
+Pillow
+numpy
 
 # OCR
-pytesseract==0.3.10
+pytesseract
 
 # VLM & LangGraph
-langchain==0.1.0
-langchain-ollama==0.0.1
-langchain-core==0.1.10
-langgraph==0.0.25
+langchain
+langchain-ollama
+langchain-core
+langgraph
 
 # Utilities
-rapidfuzz==3.5.2
-pydantic==2.5.0
+rapidfuzz
+pydantic
 
 # RF-DETR dependencies
-supervision==0.16.0
-roboflow==1.1.9
+supervision
+roboflow
 ```
 
 ---
@@ -615,26 +615,22 @@ invoice-extraction-system/
 ├── orchestration.py              # Main LangGraph workflow
 ├── requirements.txt              # Python dependencies
 ├── README.md                     # This file
-│
+│__ stratified_clustering         # Preparing data for labelling using active learning
+|
 ├── utils/                        # Agent modules
 │   ├── tesseract_OCR_agent.py   # OCR extraction
 │   ├── sign_stamp_agent.py      # RF-DETR detector
 │   ├── vlm_supervisor2.py       # VLM orchestration
 │   └── __init__.py
 │
-├── stampDetectionModel/          # Model weights
-│   └── checkpoint_best_ema.pth  # RF-DETR checkpoint
+├── checkpoint_best_ema.pth  # RF-DETR checkpoint
 │
 ├── test/                         # Test invoice images
 │   ├── sample_invoice_1.png
 │   └── sample_invoice_2.png
 │
 ├── results/                      # Output JSON files
-│   └── extraction_results.json
-│
-└── docs/                         # Additional documentation
-    ├── architecture_diagram.png
-    └── methodology.pdf
+│   └── results.json
 ```
 
 ---
